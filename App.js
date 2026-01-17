@@ -5,7 +5,7 @@ import UserProfile from "./components/UserProfile";
 
 export default function App() {
   const [profile, setProfile] = useState({
-  name: "",
+  nameeee: "",
   email: "",
   degree: "",
   skills: [],
