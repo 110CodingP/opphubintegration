@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import SignInCard from './SigninCard';
-import SignUpCard from './SignupCard';
+import SignInCard from './SignInCard';
+import SignUpCard from './SignUpCard';
 
 const WelcomeCard = () => {
   const [isSignIn, setIsSignIn] = useState(true);
