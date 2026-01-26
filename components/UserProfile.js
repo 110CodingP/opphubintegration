@@ -1,74 +1,36 @@
 import React, { useState } from "react";
-import { View, Text, ScrollView } from "react-native";
-import TextInput from "./TextInput";
+import { View, Text, ScrollView, StyleSheet } from "react-native";
+import TextInputCustom from "./TextInput"; // Renamed to avoid conflict with RN TextInput
 import Button from "./Button";
 
 export default function UserProfile({ profileData, onSave }) {
-  const [formData, setFormData] = useState(profileData);
+  const [formData, setFormData] = useState(profileData || { name: '', email: '', degree: '', skills: [], techStack: [] });
 
   const update = (key, value) => {
     setFormData({ ...formData, [key]: value });
   };
 
-  const addSkill = (skill) => {
-    if (!formData.skills.includes(skill)) {
-      update("skills", [...formData.skills, skill]);
-    }
-  };
-
-  const removeSkill = (skill) => {
-    update("skills", formData.skills.filter(s => s !== skill));
-  };
-
   return (
-    <ScrollView style={{ padding: 20 }}>
-      <Text style={{ fontSize: 24, fontWeight: "bold" }}>Your Profile</Text>
+    <ScrollView style={styles.container}>
+      <Text style={styles.title}>Your Profile</Text>
 
-      <TextInput
-        label="Name"
-        value={formData.name}
-        onChange={(v) => update("name", v)}
-      />
+      <TextInputCustom label="Name" value={formData.name} onChange={(v) => update("name", v)} />
+      <TextInputCustom label="Email" value={formData.email} onChange={(v) => update("email", v)} />
+      <TextInputCustom label="Degree" value={formData.degree} onChange={(v) => update("degree", v)} />
 
-      <TextInput
-        label="Email"
-        value={formData.email}
-        onChange={(v) => update("email", v)}
-      />
-
-      <TextInput
-        label="Degree"
-        value={formData.degree}
-        onChange={(v) => update("degree", v)}
-      />
-
-      <Text style={{ marginTop: 20, fontWeight: "bold" }}>Skills</Text>
+      <Text style={styles.label}>Skills</Text>
       {formData.skills.map(skill => (
-        <Text key={skill} onPress={() => removeSkill(skill)}>
-          ❌ {skill}
-        </Text>
+        <Text key={skill} style={styles.chip}>• {skill}</Text>
       ))}
 
-      <TextInput
-        label="Add skill"
-        onChange={(v) => addSkill(v)}
-      />
-
-      <Text style={{ marginTop: 20, fontWeight: "bold" }}>Tech Stack</Text>
-      {formData.techStack.map(tech => (
-        <Text key={tech}>• {tech}</Text>
-      ))}
-
-      <TextInput
-        label="Add tech"
-        onChange={(v) => update("techStack", [...formData.techStack, v])}
-      />
-
-      <Button
-        label="Save Profile"
-        color="green"
-        onPress={() => onSave(formData)}
-      />
+      <Button label="Save Profile" color="#10B981" onClick={() => onSave(formData)} />
     </ScrollView>
   );
 }
+
+const styles = StyleSheet.create({
+  container: { padding: 20 },
+  title: { fontSize: 24, fontWeight: "bold", marginBottom: 20 },
+  label: { fontWeight: "bold", marginTop: 10 },
+  chip: { padding: 5, color: '#555' }
+});

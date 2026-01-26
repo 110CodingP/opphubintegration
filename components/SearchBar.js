@@ -1,36 +1,47 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { View, TextInput, Text, StyleSheet, Switch } from 'react-native';
 
 export default function SearchBar() {
-  const [isToggled, setIsToggled] = useState(false);
-
   return (
-    <div className="search-section">
-      {/* Search Input and Filter */}
-      <div className="search-row">
-        <input 
-          type="text" 
-          className="search-input" 
+    <View style={styles.container}>
+      <View style={styles.searchRow}>
+        <TextInput 
+          style={styles.input} 
           placeholder="Search opportunities or companies..." 
         />
-        <select className="filter-select">
-          <option>All Types</option>
-          <option>Full-time</option>
-          <option>Internship</option>
-        </select>
-      </div>
-
-      {/* Toggle Switch */}
-      <div className="toggle-row">
-        <label className="switch">
-          <input 
-            type="checkbox" 
-            checked={isToggled} 
-            onChange={() => setIsToggled(!isToggled)} 
-          />
-          <span className="slider"></span>
-        </label>
-        <span>Show only opportunities reserved for women</span>
-      </div>
-    </div>
+        <View style={styles.dropdownPlaceholder}>
+          <Text style={styles.dropdownText}>All Types</Text>
+        </View>
+      </View>
+      
+      <View style={styles.toggleRow}>
+        <Switch value={false} trackColor={{ true: '#d946ef' }} />
+        <Text style={styles.toggleLabel}>Show only opportunities reserved for women</Text>
+      </View>
+    </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: { marginBottom: 24 },
+  searchRow: { flexDirection: 'row', gap: 10, marginBottom: 15 },
+  input: { 
+    flex: 1, 
+    backgroundColor: '#fff', 
+    padding: 12, 
+    borderRadius: 8, 
+    borderWidth: 1, 
+    borderColor: '#e5e7eb' 
+  },
+  dropdownPlaceholder: { 
+    backgroundColor: '#fff', 
+    padding: 12, 
+    borderRadius: 8, 
+    borderWidth: 1, 
+    borderColor: '#e5e7eb',
+    justifyContent: 'center'
+  },
+  dropdownText: { fontSize: 14 },
+  toggleRow: { flexDirection: 'row', alignItems: 'center', gap: 10 },
+  toggleLabel: { fontSize: 14, color: '#374151', fontWeight: '500' }
+});

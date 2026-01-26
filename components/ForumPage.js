@@ -1,4 +1,5 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import { View, Text, TouchableOpacity, StyleSheet, ScrollView } from "react-native";
 import CreatePost from "./CreatePost";
 import PostList from "./PostList";
 
@@ -10,8 +11,7 @@ export default function ForumPage() {
       id: 1,
       author: "Ambitious Leader",
       title: "Just got invited to an interview at Tech Innovators!",
-      content:
-        "I'm so excited! Any advice for preparing for a technical interview?",
+      content: "I'm so excited! Any advice for preparing for a technical interview?",
       tags: ["Interview Tips", "Tech Industry", "Career Advice"],
       comments: 2,
     },
@@ -19,8 +19,7 @@ export default function ForumPage() {
       id: 2,
       author: "Fearless Entrepreneur",
       title: "Tips for negotiating remote work compensation?",
-      content:
-        "What factors should I consider to make sure I'm getting fair pay?",
+      content: "What factors should I consider to make sure I'm getting fair pay?",
       tags: ["Salary Negotiation", "Remote Work"],
       comments: 1,
     },
@@ -28,8 +27,7 @@ export default function ForumPage() {
       id: 3,
       author: "Graceful Achiever",
       title: "Women in Business Networking Event – Seattle",
-      content:
-        "Anyone attending the Women in Tech event next week in Seattle?",
+      content: "Anyone attending the Women in Tech event next week in Seattle?",
       tags: ["Networking", "Events"],
       comments: 0,
     },
@@ -52,48 +50,132 @@ export default function ForumPage() {
       : posts.filter((post) => post.tags.includes(selectedTag));
 
   return (
-    <div className="forum-container">
+    <View style={styles.container}>
       {/* HEADER */}
-      <h1 className="forum-title">Community Forum</h1>
-      <p className="forum-subtitle">
+      <Text style={styles.forumTitle}>Community Forum</Text>
+      <Text style={styles.forumSubtitle}>
         Share experiences, ask questions, and connect with other professionals
-      </p>
+      </Text>
 
       {/* TOP CARDS */}
-      <div className="top-cards">
-        <div className="card">
-          <p className="card-title">Active Users</p>
-          <p className="active-users">🟢 16</p>
-        </div>
+      <View style={styles.topCardsRow}>
+        <View style={styles.statCard}>
+          <Text style={styles.cardLabel}>Active Users</Text>
+          <Text style={styles.activeUsersText}>🟢 16</Text>
+        </View>
 
-        <div className="card">
-          <p className="card-title">Your Identity</p>
-          <p className="identity-name">Anonymous</p>
-          <small>You’re posting anonymously</small>
-        </div>
-      </div>
+        <View style={styles.statCard}>
+          <Text style={styles.cardLabel}>Your Identity</Text>
+          <Text style={styles.identityName}>Anonymous</Text>
+          <Text style={styles.smallText}>You’re posting anonymously</Text>
+        </View>
+      </View>
 
       {/* FILTERS */}
-      <div className="card">
-        <p className="card-title">Filter by Tags</p>
-        <div className="tags">
+      <View style={styles.filterCard}>
+        <Text style={styles.cardLabel}>Filter by Tags</Text>
+        <View style={styles.tagWrapper}>
           {allTags.map((tag) => (
-            <button
+            <TouchableOpacity
               key={tag}
-              className={`tag ${selectedTag === tag ? "active" : ""}`}
-              onClick={() => setSelectedTag(tag)}
+              style={[styles.tagButton, selectedTag === tag && styles.tagActive]}
+              onPress={() => setSelectedTag(tag)}
             >
-              {tag}
-            </button>
+              <Text style={[styles.tagText, selectedTag === tag && styles.tagTextActive]}>
+                {tag}
+              </Text>
+            </TouchableOpacity>
           ))}
-        </div>
-      </div>
+        </View>
+      </View>
 
       {/* CREATE POST */}
       <CreatePost />
 
       {/* POSTS */}
       <PostList posts={filteredPosts} />
-    </div>
+    </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  forumTitle: {
+    fontSize: 28,
+    fontWeight: "700",
+    color: "#111827",
+    marginBottom: 4,
+  },
+  forumSubtitle: {
+    fontSize: 14,
+    color: "#555",
+    marginBottom: 20,
+  },
+  topCardsRow: {
+    flexDirection: "row",
+    gap: 16,
+    marginBottom: 16,
+  },
+  statCard: {
+    flex: 1,
+    backgroundColor: "white",
+    padding: 16,
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: "#e5e7eb",
+  },
+  cardLabel: {
+    fontSize: 12,
+    fontWeight: "600",
+    color: "#6b7280",
+    marginBottom: 8,
+    textTransform: "uppercase",
+  },
+  activeUsersText: {
+    fontSize: 20,
+    fontWeight: "bold",
+  },
+  identityName: {
+    fontSize: 16,
+    fontWeight: "600",
+  },
+  smallText: {
+    fontSize: 11,
+    color: "#9ca3af",
+  },
+  filterCard: {
+    backgroundColor: "white",
+    padding: 16,
+    borderRadius: 12,
+    marginBottom: 16,
+    borderWidth: 1,
+    borderColor: "#e5e7eb",
+  },
+  tagWrapper: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    gap: 8,
+  },
+  tagButton: {
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 20,
+    backgroundColor: "#f3f4f6",
+    borderWidth: 1,
+    borderColor: "#d1d5db",
+  },
+  tagActive: {
+    backgroundColor: "#4f46e5",
+    borderColor: "#4f46e5",
+  },
+  tagText: {
+    fontSize: 12,
+    color: "#374151",
+  },
+  tagTextActive: {
+    color: "white",
+    fontWeight: "600",
+  },
+});
