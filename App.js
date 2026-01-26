@@ -1,26 +1,16 @@
 import React from 'react';
-import WelcomeCard from './components/WelcomeCard';
+import ForumPage from './ForumPage'; // Ensure the path matches your file structure
+import './App.css'; // Optional: if you have global styles
 
 function App() {
   return (
-    <div style={styles.pageContainer}>
-      <WelcomeCard />
+    <div className="App">
+      {/* You can wrap it in a main tag or a layout container */}
+      <main>
+        <ForumPage />
+      </main>
     </div>
   );
 }
-
-const styles = {
-  pageContainer: {
-    display: 'flex',            
-    justifyContent: 'center',   
-    alignItems: 'center',       
-    minHeight: '100vh',         
-    width: '100vw',             
-    backgroundColor: '#f3f4f6', 
-    fontFamily: 'Arial, sans-serif',
-    margin: 0,
-    padding: 0,
-  }
-};
 
 export default App;
