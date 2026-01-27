@@ -5,7 +5,7 @@ export default function TextInput({ label, value, onChange, placeholder, type = 
     marginBottom: '15px',
     display: 'flex',
     flexDirection: 'column',
-    textAlign: 'left', // Ensures label stays on the left
+    textAlign: 'left', 
   };
 
   const labelStyle = {
@@ -19,17 +19,17 @@ export default function TextInput({ label, value, onChange, placeholder, type = 
     padding: '12px 16px',
     fontSize: '16px',
     borderRadius: '50px',
-    border: '1px solid gray', // Reduced thickness slightly for cleaner web look
+    border: '1px solid gray', 
     outline: 'none',
     width: '100%',
-    boxSizing: 'border-box', // Prevents padding from breaking layout
+    boxSizing: 'border-box', 
   };
 
   return (
     <div style={containerStyle}>
       <label style={labelStyle}>{label}</label>
       <input
-        type={type} // Allows for "password" or "email" types
+        type={type} 
         value={value}
         placeholder={placeholder}
         onChange={(e) => onChange(e.target.value)}
