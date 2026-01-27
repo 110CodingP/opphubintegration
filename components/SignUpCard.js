@@ -45,7 +45,6 @@ const SignUpCard = ({ onSwitch }) => {
 
       <div style={styles.footer}>
         <span style={{ color: 'gray' }}>Already have an account? </span>
-        {/* 2. Use 'onSwitch' here instead of href */}
         <button onClick={onSwitch} style={styles.textButton}>
           Log in
         </button>
@@ -62,7 +61,6 @@ const styles = {
   checkboxContainer: { display: 'flex', alignItems: 'center', marginBottom: '20px' },
   link: { color: '#2563EB', textDecoration: 'none' },
   footer: { textAlign: 'center', marginTop: '20px', fontSize: '14px' },
-  // New style to make the button look like a link
   textButton: { background: 'none', border: 'none', color: '#2563EB', fontWeight: 'bold', cursor: 'pointer', fontSize: '14px', padding: 0, textDecoration: 'underline' }
 };
 
