@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import TextInput from './TextInput';
 import Button from './Button';
 
-// 1. Accept 'onSwitch' prop here
 const SignInCard = ({ onSwitch }) => {
   const [formData, setFormData] = useState({ email: '', password: '' });
 
