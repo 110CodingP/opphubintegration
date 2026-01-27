@@ -57,7 +57,7 @@ export default function ForumPage() {
         Share experiences, ask questions, and connect with other professionals
       </Text>
 
-      {/* TOP CARDS */}
+
       <View style={styles.topCardsRow}>
         <View style={styles.statCard}>
           <Text style={styles.cardLabel}>Active Users</Text>
@@ -71,7 +71,7 @@ export default function ForumPage() {
         </View>
       </View>
 
-      {/* FILTERS */}
+
       <View style={styles.filterCard}>
         <Text style={styles.cardLabel}>Filter by Tags</Text>
         <View style={styles.tagWrapper}>
@@ -89,10 +89,10 @@ export default function ForumPage() {
         </View>
       </View>
 
-      {/* CREATE POST */}
+ 
       <CreatePost />
 
-      {/* POSTS */}
+
       <PostList posts={filteredPosts} />
     </View>
   );
@@ -178,4 +178,5 @@ const styles = StyleSheet.create({
     color: "white",
     fontWeight: "600",
   },
+
 });
