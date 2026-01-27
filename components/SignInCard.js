@@ -34,7 +34,7 @@ const SignInCard = ({ onSwitch }) => {
 
       <div style={styles.footer}>
         <span style={{ color: 'gray' }}>Don't have an account? </span>
-        {/* 2. Use 'onSwitch' here */}
+     
         <button onClick={onSwitch} style={styles.textButton}>
           Create an account
         </button>
