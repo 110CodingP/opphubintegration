@@ -9,7 +9,7 @@ export default function OpportunityCard({ title, company, tag }) {
           <Text style={styles.titleText}>{title}</Text>
           <Text style={styles.companyText}>{company}</Text>
         </View>
-        {/* Placeholder for company logo if needed */}
+    
         <View style={styles.logoBox} />
       </View>
       
@@ -70,3 +70,4 @@ const styles = StyleSheet.create({
   },
 
 });
+
