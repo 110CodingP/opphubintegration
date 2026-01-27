@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     marginBottom: 16,
     width: '100%',
-    // Professional Shadow
+    
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.05,
@@ -68,4 +68,5 @@ const styles = StyleSheet.create({
     color: '#4b5563',
     fontWeight: '500',
   },
+
 });
