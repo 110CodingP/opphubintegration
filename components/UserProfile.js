@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { View, Text, ScrollView, StyleSheet } from "react-native";
-import TextInputCustom from "./TextInput"; // Renamed to avoid conflict with RN TextInput
+import TextInputCustom from "./TextInput"; 
 import Button from "./Button";
 
 export default function UserProfile({ profileData, onSave }) {
