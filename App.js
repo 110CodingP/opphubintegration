@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, Text, ScrollView, StatusBar } from 'react-native';
 
-// Import the components
 import NavigationBar from './components/navigation-bar';
 import Sidebar from './components/sidebar';
 import ForumPage from './components/ForumPage';
@@ -11,20 +10,19 @@ import SearchBar from './components/SearchBar';
 export default function App() {
   const [activeTab, setActiveTab] = useState('Opportunities');
 
-  // Helper function to render content based on the active tab
+ 
   const renderContent = () => {
     switch (activeTab) {
-      // Inside App.js renderContent function
+  
 case 'Opportunities':
   return (
     <View style={styles.tabContainer}>
       <Text style={styles.pageTitle}>Opportunities</Text>
       <Text style={styles.pageSubtitle}>Showing opportunities matching your profile: AE</Text>
       
-      {/* Search Section */}
+    
       <SearchBar />
 
-      {/* Cards List */}
       <View style={styles.cardsList}>
         <OpportunityCard title="Software Engineer" company="Tech Innovators" tag="Full-time" />
         <OpportunityCard title="Marketing Intern" company="Global Brands" tag="Internship" />
@@ -49,14 +47,14 @@ case 'Opportunities':
     <View style={styles.appContainer}>
       <StatusBar barStyle="dark-content" />
       
-      {/* 1. Nav Bar - Fixed at the top */}
+
       <NavigationBar userName="Shaoni Mukherjee" notificationCount={3} />
 
       <View style={styles.mainBody}>
-        {/* 2. Sidebar - Fixed on the left */}
+   
         <Sidebar activeTab={activeTab} setActiveTab={setActiveTab} />
 
-        {/* 3. Content Area - Scrollable on the right */}
+    
         <View style={styles.content}>
           <ScrollView 
             showsVerticalScrollIndicator={false}
@@ -79,14 +77,14 @@ const styles = StyleSheet.create({
   },
   mainBody: { 
     flex: 1, 
-    flexDirection: 'row' // Aligns Sidebar and Content side-by-side
+    flexDirection: 'row' 
   },
   content: { 
     flex: 1, 
-    backgroundColor: '#faf5ff' // Light purple background for the dashboard area
+    backgroundColor: '#faf5ff' 
   },
   scrollPadding: {
-    padding: 24, // Consistent spacing for all pages
+    padding: 24,
   },
   placeholderContainer: {
     flex: 1,
